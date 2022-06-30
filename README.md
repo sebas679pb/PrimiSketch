@@ -1,6 +1,6 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sebas679pb/PrimiSketch/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sebas679pb/PrimiSketch/tree/master)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f0977c539aeb46f881447aaafa432a0e)](https://www.codacy.com/gh/sebas679pb/PrimiSketch/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sebas679pb/PrimiSketch&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c654bfc1f3704b878f2bb33bddfb6e1f)](https://www.codacy.com/gh/sebas679pb/PrimiSketch/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sebas679pb/PrimiSketch&amp;utm_campaign=Badge_Grade)
 
 # PrimiSketch
 
