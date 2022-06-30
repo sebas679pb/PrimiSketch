@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100%;
     font-family: 'Times New Roman', Times, serif
 }
@@ -31,10 +31,10 @@ button {
 
 .appLetter {
     color: rgb(230, 230, 230);
-    font-style:italic;
+    font-style: italic;
 }
 
-.backgroundLogin {
+.background {
     width: 100%;
     min-height: 100vh;
     display: -webkit-box;
@@ -54,7 +54,7 @@ button {
     z-index: 1;
 }
 
-.backgroundLogin::before {
+.background::before {
     content: "";
     display: block;
     position: absolute;
@@ -66,21 +66,8 @@ button {
     background-color: rgba(0, 0, 0, 0.525);
 }
 
-.boxLogin {
-    width: 500px;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 55px 55px 37px 55px;
-
-    background: #870606;
-    background: -webkit-linear-gradient(top, #870606, #191b6b);
-    background: -o-linear-gradient(top, #870606, #191b6b);
-    background: -moz-linear-gradient(top, #870606, #191b6b);
-    background: linear-gradient(top, #870606, #191b6b);
-}
-
 .appLogo {
-    font-size: 60px;
+    font-size: 30px;
 
     display: -webkit-box;
     display: -webkit-flex;
@@ -89,44 +76,61 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: rgb(12, 99, 102);
     margin: 0 auto;
 }
 
-.titleLogin {
-    font-family: Poppins-Medium;
-    font-size: 30px;
-    color: #fff;
-    line-height: 1.2;
+.container {
+    width: 1000px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2.5% 5%;
+
+    background: #870606;
+    background: -webkit-linear-gradient(top, #870606, #191b6b);
+    background: -o-linear-gradient(top, #870606, #191b6b);
+    background: -moz-linear-gradient(top, #870606, #191b6b);
+    background: linear-gradient(top, #870606, #191b6b);
+}
+
+.cardContainer {
+    width: 100%;
+    display: flex;
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.card {
+    width: 100%;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgb(224, 224, 224);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    transition: all 400ms ease-out;
+    cursor: default;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+}
+
+.card .cardContent {
+    padding: 15px;
     text-align: center;
-    text-transform: uppercase;
-
-    display: block;
 }
 
-.inputBoxLogin {
-    width: 100%;
-    position: relative;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.24);
-    margin-bottom: 30px;
-}
-
-.inputLogin {
-    font-family: Poppins-Regular;
-    font-size: 16px;
-    color: #fff;
-    line-height: 1.2;
-
-    display: block;
-    width: 100%;
-    height: 45px;
-    background: transparent;
-}
-
-.btnBoxLogin {
+.btnContainer {
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -137,10 +141,10 @@ button {
     justify-content: center;
 }
 
-.btnLogin {
+.customBtn {
     font-family: Poppins-Medium;
     font-size: 16px;
-    color: #555555;
+    color: #e4e4e4;
     line-height: 1.2;
 
     display: -webkit-box;
@@ -155,11 +159,11 @@ button {
     height: 50px;
     border-radius: 25px;
 
-    background: #9152f8;
-    background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
-    background: -o-linear-gradient(bottom, #7579ff, #b224ef);
-    background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
-    background: linear-gradient(bottom, #7579ff, #b224ef);
+    background: rgb(12, 99, 102);
+    background: -webkit-linear-gradient(bottom, rgb(55, 162, 134), #04524b);
+    background: -o-linear-gradient(bottom, rgb(55, 162, 134), #04524b);
+    background: -moz-linear-gradient(bottom, rgb(55, 162, 134), #04524b);
+    background: linear-gradient(bottom, rgb(55, 162, 134), #04524b);
     position: relative;
     z-index: 1;
 
@@ -169,7 +173,7 @@ button {
     transition: all 0.4s;
 }
 
-.btnLogin::before {
+.customBtn::before {
     content: "";
     display: block;
     position: absolute;
@@ -177,7 +181,7 @@ button {
     width: 100%;
     height: 100%;
     border-radius: 25px;
-    background-color: #fff;
+    background-color: rgb(12, 99, 102);
     top: 0;
     left: 0;
     opacity: 1;
@@ -188,10 +192,10 @@ button {
     transition: all 0.4s;
 }
 
-.btnLogin:hover {
+.customBtn:hover {
     color: #fff;
 }
 
-.btnLogin:hover:before {
+.customBtn:hover:before {
     opacity: 0;
 }
