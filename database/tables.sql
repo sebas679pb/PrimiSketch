@@ -6,7 +6,7 @@ CREATE SEQUENCE IF NOT EXISTS idDate;
 CREATE TABLE IF NOT EXISTS Users(
     idUser INT NOT NULL DEFAULT nextval('idUser'),
     username VARCHAR(50) NOT NULL UNIQUE,
-    passw VARCHAR(30) NOT NULL,
+    passwrd VARCHAR(30) NOT NULL,
     nameUser VARCHAR(30) NOT NULL,
     programa VARCHAR(20),
     tipo VARCHAR(15) NOT NULL,
