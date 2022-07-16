@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Users(
 
 CREATE TABLE IF NOT EXISTS Schedules(
     idSchedule INT NOT NULL DEFAULT nextval('idSchedule'),
-    creationDate TIMESTAMP NOT NULL,
+    nombre VARCHAR(30) NOT NULL UNIQUE,
     PRIMARY KEY (idSchedule))
 ;
 

@@ -13,7 +13,7 @@ public class Subjects {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSubject;
+    private Long idSubject;
 
     @Column(name = "memoSub", nullable = false)
     private String memoSub;
@@ -30,7 +30,7 @@ public class Subjects {
     public Subjects() {
     }
 
-    public Subjects(int idSubject, String memoSub, String nameSub, String groupSub, String professor) {
+    public Subjects(Long idSubject, String memoSub, String nameSub, String groupSub, String professor) {
         this.idSubject = idSubject;
         this.memoSub = memoSub;
         this.nameSub = nameSub;
@@ -39,7 +39,7 @@ public class Subjects {
     }
 
     // Getters
-    public int getIdSubject() {
+    public Long getIdSubject() {
         return idSubject;
     }
 
@@ -60,7 +60,7 @@ public class Subjects {
     }
 
     // Setters
-    public void setIdSubject(int idSubject) {
+    public void setIdSubject(Long idSubject) {
         this.idSubject = idSubject;
     }
 

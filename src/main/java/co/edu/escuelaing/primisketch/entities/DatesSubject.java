@@ -15,7 +15,7 @@ public class DatesSubject {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDate;
+    private Long idDate;
 
     @Column(name = "startTime", nullable = false)
     private String startTime;
@@ -33,7 +33,7 @@ public class DatesSubject {
     public DatesSubject() {
     }
 
-    public DatesSubject(int idDate, String startTime, String endTime, String dia, Subjects idSubjects) {
+    public DatesSubject(Long idDate, String startTime, String endTime, String dia, Subjects idSubjects) {
         this.idDate = idDate;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -42,7 +42,7 @@ public class DatesSubject {
     }
 
     // Getters
-    public int getIdDate() {
+    public Long getIdDate() {
         return idDate;
     }
 
@@ -63,7 +63,7 @@ public class DatesSubject {
     }
 
     // Setters
-    public void setIdDate(int idDate) {
+    public void setIdDate(Long idDate) {
         this.idDate = idDate;
     }
 

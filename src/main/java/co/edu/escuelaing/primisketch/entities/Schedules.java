@@ -1,7 +1,6 @@
 package co.edu.escuelaing.primisketch.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,40 +15,40 @@ public class Schedules implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idSchedule;
+    private Long idSchedule;
 
-    @Column(name = "creationDate", nullable = false)
-    private Date creationDate;
+    @Column(name = "nombre", unique = true, nullable = false)
+    private String nombre;
 
     public Schedules() {
     }
 
-    public Schedules(long idSchedule, Date creationDate) {
+    public Schedules(Long idSchedule, String nombre) {
         this.idSchedule = idSchedule;
-        this.creationDate = creationDate;
+        this.nombre = nombre;
     }
 
     // Getters
-    public long getIdSchedule() {
+    public Long getIdSchedule() {
         return idSchedule;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public String getNombre() {
+        return nombre;
     }
 
     // Setters
-    public void setIdSchedule(long idSchedule) {
+    public void setIdSchedule(Long idSchedule) {
         this.idSchedule = idSchedule;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
     public String toString() {
-        return "[idSchedule=" + idSchedule + ", creation date=" + creationDate + "]";
+        return "[idSchedule=" + idSchedule + ", name=" + nombre + "]";
     }
-    
+
 }
