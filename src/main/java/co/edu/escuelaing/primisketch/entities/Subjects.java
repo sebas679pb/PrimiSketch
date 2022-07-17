@@ -22,7 +22,7 @@ public class Subjects {
     private String nameSub;
 
     @Column(name = "groupSub", nullable = false)
-    private Integer groupSub;
+    private Long groupSub;
 
     @Column(name = "professor", nullable = false)
     private String professor;
@@ -30,7 +30,7 @@ public class Subjects {
     public Subjects() {
     }
 
-    public Subjects(Long idSubject, String memoSub, String nameSub, Integer groupSub, String professor) {
+    public Subjects(Long idSubject, String memoSub, String nameSub, Long groupSub, String professor) {
         this.idSubject = idSubject;
         this.memoSub = memoSub;
         this.nameSub = nameSub;
@@ -51,7 +51,7 @@ public class Subjects {
         return nameSub;
     }
 
-    public Integer getGroupSub() {
+    public Long getGroupSub() {
         return groupSub;
     }
 
@@ -72,7 +72,7 @@ public class Subjects {
         this.nameSub = nameSub;
     }
 
-    public void setGroupSub(Integer groupSub) {
+    public void setGroupSub(Long groupSub) {
         this.groupSub = groupSub;
     }
 
