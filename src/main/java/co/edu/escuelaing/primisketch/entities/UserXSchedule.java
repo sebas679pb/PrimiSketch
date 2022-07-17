@@ -23,7 +23,7 @@ public class UserXSchedule {
         this.id = id;
     }
 
-    public UserXSchedule(Subjects idUser, Schedules idSchedule) {
+    public UserXSchedule(Users idUser, Schedules idSchedule) {
         this.id = new PrimaryUxS(idUser, idSchedule);
     }
 
@@ -32,7 +32,7 @@ public class UserXSchedule {
         return id;
     }
 
-    public Subjects getIdUser() {
+    public Users getIdUser() {
         return id.getIdUser();
     }
 
@@ -45,7 +45,7 @@ public class UserXSchedule {
         this.id = id;
     }
     
-    public void setIdUser(Subjects idUser) {
+    public void setIdUser(Users idUser) {
         id.setIdUser(idUser);
     }
 
@@ -60,7 +60,7 @@ class PrimaryUxS implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idUser", nullable = false)
-    private Subjects idUser;
+    private Users idUser;
 
     @ManyToOne
     @JoinColumn(name = "idSchedule", nullable = false)
@@ -69,13 +69,13 @@ class PrimaryUxS implements Serializable {
     public PrimaryUxS() {
     }
 
-    public PrimaryUxS(Subjects idUser, Schedules idSchedule) {
+    public PrimaryUxS(Users idUser, Schedules idSchedule) {
         this.idUser = idUser;
         this.idSchedule = idSchedule;
     }
 
     // Getters
-    public Subjects getIdUser() {
+    public Users getIdUser() {
         return idUser;
     }
 
@@ -84,7 +84,7 @@ class PrimaryUxS implements Serializable {
     }
 
     // Setters
-    public void setIdUser(Subjects idUser) {
+    public void setIdUser(Users idUser) {
         this.idUser = idUser;
     }
 
