@@ -12,10 +12,10 @@ import co.edu.escuelaing.primisketch.entities.ScheduleXSubject;
 @Repository
 public interface ScheduleXSubjectRepository extends JpaRepository<ScheduleXSubject, Long>{
     
-    @Query("SELECT c FROM ScheduleXSubject c WHERE idSchedule=:id")
+    @Query("SELECT c FROM ScheduleXSubject c WHERE id_schedule=:id")
     List<ScheduleXSubject> getWithScheduleId(@Param("id") Long id);
 
-    @Query("SELECT c FROM ScheduleXSubject c WHERE idSubject=:id")
+    @Query("SELECT c FROM ScheduleXSubject c WHERE id_subject=:id")
     List<ScheduleXSubject> getWithSubjectId(@Param("id") Long id);
 
 }

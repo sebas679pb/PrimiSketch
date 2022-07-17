@@ -11,10 +11,10 @@ import co.edu.escuelaing.primisketch.entities.Subjects;
 @Repository
 public interface SubjectsRepository extends JpaRepository<Subjects, Long> {
     
-    @Query("SELECT c FROM Subjects c WHERE memoSub=:memo")
+    @Query("SELECT c FROM Subjects c WHERE memo_sub=:memo")
     List<Subjects> getSubjectsByMemo(@Param("memo") String memo);
     
-    @Query("SELECT c FROM Subjects c WHERE nameSub=:name")
+    @Query("SELECT c FROM Subjects c WHERE name_sub=:name")
     List<Subjects> getSubjectsByName(@Param("name") String name);
 
     @Query("SELECT c FROM Subjects c WHERE professor=:name")

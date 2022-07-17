@@ -12,7 +12,7 @@ import co.edu.escuelaing.primisketch.entities.DatesSubject;
 @Repository
 public interface DatesSubjectRepository extends JpaRepository<DatesSubject, Long> {
     
-    @Query("SELECT c FROM DatesSubject c WHERE idSubject=:id")
+    @Query("SELECT c FROM DatesSubject c WHERE id_subject=:id")
     List<DatesSubject> getDatesSubject(@Param("id") Long id);
     
 }

@@ -12,10 +12,10 @@ import co.edu.escuelaing.primisketch.entities.UserXSchedule;
 @Repository
 public interface UserXScheduleRepository extends JpaRepository<UserXSchedule, Long>{
     
-    @Query("SELECT c FROM UserXSchedule c WHERE idUser=:id")
+    @Query("SELECT c FROM UserXSchedule c WHERE id_user=:id")
     List<UserXSchedule> getGroupByUserId(@Param("id") Long id);
 
-    @Query("SELECT c FROM UserXSchedule c WHERE idSchedule=:id")
+    @Query("SELECT c FROM UserXSchedule c WHERE id_schedule=:id")
     List<UserXSchedule> getGroupByScheduleId(@Param("id") Long id);
 
 }
