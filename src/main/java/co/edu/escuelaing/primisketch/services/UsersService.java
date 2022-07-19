@@ -31,8 +31,8 @@ public class UsersService {
         return usersRepository.findById(id);
     }
 
-    public Optional<Users> getUserByUsername(String name) {
-        return usersRepository.getUserByUsername(name);
+    public Optional<Users> loginValidation(String name, String password) {
+        return usersRepository.loginValidation(name, password);
     }
 
 }

@@ -12,7 +12,7 @@ import co.edu.escuelaing.primisketch.entities.Users;
 @Repository
 public interface UsersRepository extends JpaRepository<Users,Long> {
     
-    @Query("SELECT c FROM Users c WHERE username=:name")
-    Optional<Users> getUserByUsername(@Param("name") String name);
+    @Query("SELECT c FROM Users c WHERE username=:name AND passwrd=:password")
+    Optional<Users> loginValidation(@Param("name") String name, @Param("password") String password);
     
 }
