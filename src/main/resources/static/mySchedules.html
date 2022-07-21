@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 
+<!-- Agregar navBar -->
+
 <head>
-    <title>Home</title>
+    <title>My schedules</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
+    <script src="js/mySchedules.js"></script>
 </head>
 
-<body>
+<body onload="getSchedules()">
     <div class="background" style="background-image: url('imgs/background.jpg');">
         <div class="container">
             <div class="appLogo">
                 <p class="appLetter">PrimiSketch</p>
             </div>
-            
+            <div id="schedules" class="cards-list"></div>
         </div>
     </div>
 </body>

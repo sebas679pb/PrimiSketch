@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<!-- navBar impl -->
+
+<head>
+    <title>Subjects Information</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/subjectsInfo.css">
+    <script src="js/subjectsInfo.js"></script>
+</head>
+
+<body onload="getSubjects()">
+    <div class="background" style="background-image: url('imgs/background.jpg');">
+        <div class="container">
+            <div class="appLogo">
+                <p class="appLetter">PrimiSketch</p>
+            </div>
+            <br>
+            <center>
+                <div class="selectStyle">
+                    <select id="memoSubject" name="memoSubject" onchange="getGroups()">
+                        <option disable hidden>Subjects</option>
+                    </select>
+                    <select id="groupSubject" name="groupSubject">
+                        <option disable hidden>Group</option>
+                    </select>
+                </div>
+                <br>
+                <div class="btnContainer">
+                    <button class="customBtn" id="infoButton" onclick="getSubjectInfo()">get</button>
+                </div>
+                <br>
+                <div class="flip-card-container" id="subjectsInfo" style="display: none">
+                    <div class="flip-card">
+                        <div class="card-front">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="imgs/subjectCard.jpg">
+                                <figcaption id="memoCard">Memo</figcaption>
+                            </figure>
+                            <ul id="infoCard"></ul>
+                        </div>
+                        <div class="card-back">
+                            <figure>
+                                <div class="img-bg"></div>
+                                <img src="imgs/subjectCard.jpg">
+                                <figcaption>Horario</figcaption>
+                            </figure>
+                
+                            <ul id="horarioCard"></ul>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
+</body>
+
+</html>

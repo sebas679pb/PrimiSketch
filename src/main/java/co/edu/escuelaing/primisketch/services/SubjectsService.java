@@ -43,4 +43,8 @@ public class SubjectsService {
         return subjectsRepository.getSubjectsByProfessor(name);
     }
 
+    public Optional<Subjects> getSubjectByMemoGroup(String memo, Long group) {
+        return subjectsRepository.getSubjetByMemoGroup(memo, group);
+    }
+
 }
