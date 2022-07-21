@@ -15,5 +15,5 @@ function getSchedules() {
 
 function getSchedule(idSchedule) {
     sessionStorage.setItem("idSchedule", idSchedule);
-    // window.location.href = "/schedule.html";
+    window.location.href = "/schedule.html";
 }

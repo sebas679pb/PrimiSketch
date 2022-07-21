@@ -7,3 +7,7 @@ function logout() {
 function goHome() {
     window.location.href = "/home.html";
 }
+
+function goBack(){
+    window.location.href = "/mySchedules.html";
+}
