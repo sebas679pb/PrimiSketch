@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Agregar navBar -->
-
 <head>
     <title>My schedules</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
     <script src="js/mySchedules.js"></script>
+    <script src="js/navBar.js"></script>
 </head>
 
 <body onload="getSchedules()">
@@ -18,6 +17,10 @@
                 <p class="appLetter">PrimiSketch</p>
             </div>
             <div id="schedules" class="cards-list"></div>
+            <br>
+            <div align="center">
+                <button class="customBtn" onclick="goHome()">Regresar</button>
+            </div>
         </div>
     </div>
 </body>
