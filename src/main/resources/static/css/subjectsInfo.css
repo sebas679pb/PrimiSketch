@@ -203,7 +203,7 @@ button {
     --grey: hsl(0, 0%, 50%);
 
     width: 310px;
-    height: 450px;
+    height: 490px;
 
     perspective: 1000px;
 }
@@ -248,12 +248,18 @@ button {
 .card-front {
     transform: rotateY(0deg);
     z-index: 2;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
 }
 
 /* .card-back */
 .card-back {
     transform: rotateY(180deg);
     z-index: 1;
+    font-size: 23px;
+    font-style: italic;
+    font-weight: bold;
 }
 
 /* figure */
@@ -360,7 +366,7 @@ li {
     margin-top: 12px;
     padding-bottom: 12px;
 
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
 
     position: relative;
