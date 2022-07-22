@@ -24,6 +24,9 @@ insert into dates_subjects (dia, end_time, start_time, id_subject) VALUES ('J', 
 
 insert into schedulexsubject (id_subject,id_schedule) VALUES (2,1);
 insert into schedulexsubject (id_subject,id_schedule) VALUES (3,1);
+insert into schedulexsubject (id_subject,id_schedule) VALUES (4,2);
+insert into schedulexsubject (id_subject,id_schedule) VALUES (4,3);
 
 insert into userxschedule (id_user,id_schedule) VALUES (1,1);
 insert into userxschedule (id_user,id_schedule) VALUES (1,3);
+insert into userxschedule (id_user,id_schedule) VALUES (3,2);

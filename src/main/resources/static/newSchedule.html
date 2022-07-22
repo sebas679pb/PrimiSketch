@@ -5,7 +5,9 @@
     <title>Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
+    <link rel="stylesheet" type="text/css" href="css/newSchedule.css">
+    <script src="js/schedule.js"></script>
+    <script src="js/navBar.js"></script>
 </head>
 
 <body>
@@ -14,7 +16,18 @@
             <div class="appLogo">
                 <p class="appLetter">PrimiSketch</p>
             </div>
-            
+            <br><br>
+            <center>
+                <div class="inputContainer">
+                    <input class="inputSketch" type="text" id="newSchedule" placeholder="Schedule name">
+                </div>
+            </center>
+            <br>
+            <div align="center">
+                <button class="customBtn" onclick="goHome()">Save</button>
+                <br>
+                <button class="customBtn" onclick="goHome()">Cancel</button>
+            </div>
         </div>
     </div>
 </body>

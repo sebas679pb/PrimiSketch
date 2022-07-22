@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100%;
     font-family: 'Times New Roman', Times, serif
 }
@@ -31,10 +31,10 @@ button {
 
 .appLetter {
     color: rgb(230, 230, 230);
-    font-style:italic;
+    font-style: italic;
 }
 
-.backgroundLogin {
+.background {
     width: 100%;
     min-height: 100vh;
     display: -webkit-box;
@@ -54,7 +54,7 @@ button {
     z-index: 1;
 }
 
-.backgroundLogin::before {
+.background::before {
     content: "";
     display: block;
     position: absolute;
@@ -66,21 +66,8 @@ button {
     background-color: rgba(0, 0, 0, 0.525);
 }
 
-.boxLogin {
-    width: 500px;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 55px 55px 37px 55px;
-
-    background: #870606;
-    background: -webkit-linear-gradient(top, #870606, #191b6b);
-    background: -o-linear-gradient(top, #870606, #191b6b);
-    background: -moz-linear-gradient(top, #870606, #191b6b);
-    background: linear-gradient(top, #870606, #191b6b);
-}
-
 .appLogo {
-    font-size: 60px;
+    font-size: 30px;
 
     display: -webkit-box;
     display: -webkit-flex;
@@ -89,36 +76,39 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: rgb(12, 99, 102);
     margin: 0 auto;
 }
 
-.titleLogin {
-    font-family: Poppins-Medium;
-    font-size: 30px;
-    color: #fff;
-    line-height: 1.2;
-    text-align: center;
-    text-transform: uppercase;
+.container {
+    width: 55%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2.5% 5%;
 
-    display: block;
+    background: #870606;
+    background: -webkit-linear-gradient(top, #870606, #191b6b);
+    background: -o-linear-gradient(top, #870606, #191b6b);
+    background: -moz-linear-gradient(top, #870606, #191b6b);
+    background: linear-gradient(top, #870606, #191b6b);
 }
 
-.inputBoxLogin {
-    width: 100%;
-    position: relative;
+.inputContainer {
+    width: 70%;
+    position:inherit;
     border-bottom: 2px solid rgba(255, 255, 255, 0.24);
     margin-bottom: 30px;
 }
 
-.inputLogin {
+.inputSketch {
     font-family: Poppins-Regular;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
     line-height: 1.2;
+    text-align: center;
 
     display: block;
     width: 100%;
@@ -126,18 +116,11 @@ button {
     background: transparent;
 }
 
-.btnBoxLogin {
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.inputSketch::placeholder{
+    text-align: center;
 }
 
-.btnLogin {
+.customBtn {
     font-family: Poppins-Medium;
     font-size: 16px;
     color: #555555;
@@ -169,7 +152,7 @@ button {
     transition: all 0.4s;
 }
 
-.btnLogin::before {
+.customBtn::before {
     content: "";
     display: block;
     position: absolute;
@@ -188,10 +171,10 @@ button {
     transition: all 0.4s;
 }
 
-.btnLogin:hover {
+.customBtn:hover {
     color: #fff;
 }
 
-.btnLogin:hover:before {
+.customBtn:hover:before {
     opacity: 0;
 }
