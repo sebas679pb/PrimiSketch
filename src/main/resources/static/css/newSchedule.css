@@ -120,10 +120,10 @@ button {
     text-align: center;
 }
 
-.customBtn {
+.customBtnNav {
     font-family: Poppins-Medium;
     font-size: 16px;
-    color: #555555;
+    color: #24125b;
     line-height: 1.2;
 
     display: -webkit-box;
@@ -152,7 +152,7 @@ button {
     transition: all 0.4s;
 }
 
-.customBtn::before {
+.customBtnNav::before {
     content: "";
     display: block;
     position: absolute;
@@ -171,10 +171,10 @@ button {
     transition: all 0.4s;
 }
 
-.customBtn:hover {
+.customBtnNav:hover {
     color: #fff;
 }
 
-.customBtn:hover:before {
+.customBtnNav:hover:before {
     opacity: 0;
 }

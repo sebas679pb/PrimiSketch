@@ -155,10 +155,10 @@ button {
     justify-content: center;
 }
 
-.customBtn {
+.customBtnBack {
     font-family: Poppins-Medium;
     font-size: 16px;
-    color: #e4e4e4;
+    color: #24125b;
     line-height: 1.2;
 
     display: -webkit-box;
@@ -173,11 +173,11 @@ button {
     height: 50px;
     border-radius: 25px;
 
-    background: rgb(12, 99, 102);
-    background: -webkit-linear-gradient(bottom, rgb(55, 162, 134), #04524b);
-    background: -o-linear-gradient(bottom, rgb(55, 162, 134), #04524b);
-    background: -moz-linear-gradient(bottom, rgb(55, 162, 134), #04524b);
-    background: linear-gradient(bottom, rgb(55, 162, 134), #04524b);
+    background: #9152f8;
+    background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
+    background: -o-linear-gradient(bottom, #7579ff, #b224ef);
+    background: -moz-linear-gradient(bottom, #7579ff, #b224ef);
+    background: linear-gradient(bottom, #7579ff, #b224ef);
     position: relative;
     z-index: 1;
 
@@ -187,7 +187,7 @@ button {
     transition: all 0.4s;
 }
 
-.customBtn::before {
+.customBtnBack::before {
     content: "";
     display: block;
     position: absolute;
@@ -195,7 +195,7 @@ button {
     width: 100%;
     height: 100%;
     border-radius: 25px;
-    background-color: rgb(12, 99, 102);
+    background-color: rgb(224, 224, 224);
     top: 0;
     left: 0;
     opacity: 1;
@@ -206,10 +206,10 @@ button {
     transition: all 0.4s;
 }
 
-.customBtn:hover {
+.customBtnBack:hover {
     color: #fff;
 }
 
-.customBtn:hover:before {
+.customBtnBack:hover:before {
     opacity: 0;
 }
