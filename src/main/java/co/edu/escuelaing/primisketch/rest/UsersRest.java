@@ -1,6 +1,5 @@
 package co.edu.escuelaing.primisketch.rest;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.escuelaing.primisketch.entities.Users;
-import co.edu.escuelaing.primisketch.entities.UserXSchedule;
-import co.edu.escuelaing.primisketch.services.UserXScheduleService;
 import co.edu.escuelaing.primisketch.services.UsersService;
 
 @RestController
@@ -23,9 +20,6 @@ public class UsersRest {
     
     @Autowired
     private UsersService usersService;
-
-    @Autowired
-    private UserXScheduleService userXScheduleService;
 
     @PostMapping("/login")
     private ResponseEntity<Optional<Users>> loginValidation(@PathParam("name") String name, @PathParam("password") String password) {

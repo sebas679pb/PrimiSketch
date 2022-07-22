@@ -11,7 +11,7 @@
     <script src="js/navBar.js"></script>
 </head>
 
-<body>
+<body onload="visualSchedule()">
     <div class="background" style="background-image: url('imgs/background.jpg');">
         <div class="container">
             <div class="appLogo">
@@ -34,101 +34,82 @@
                     <tbody>
                         <tr>
                             <td>7:00 - 8:30</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L1"></td>
+                            <td id="M1"></td>
+                            <td id="X1"></td>
+                            <td id="J1"></td>
+                            <td id="V1"></td>
+                            <td id="S1"></td>
                         </tr>
                         <tr>
                             <td>8:30 - 10:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L2"></td>
+                            <td id="M2"></td>
+                            <td id="X2"></td>
+                            <td id="J2"></td>
+                            <td id="V2"></td>
+                            <td id="S2"></td>
                         </tr>
                         <tr>
                             <td>10:00 - 11:30</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L3"></td>
+                            <td id="M3"></td>
+                            <td id="X3"></td>
+                            <td id="J3"></td>
+                            <td id="V3"></td>
+                            <td id="S3"></td>
                         </tr>
                         <tr>
                             <td>11:30 - 13:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>11:30 - 13:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>11:30 - 13:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L4"></td>
+                            <td id="M4"></td>
+                            <td id="X4"></td>
+                            <td id="J4"></td>
+                            <td id="V4"></td>
+                            <td id="S4"></td>
                         </tr>
                         <tr>
                             <td>13:00 - 14:30</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L5"></td>
+                            <td id="M5"></td>
+                            <td id="X5"></td>
+                            <td id="J5"></td>
+                            <td id="V5"></td>
+                            <td id="S5"></td>
                         </tr>
                         <tr>
                             <td>14:30 - 16:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L6"></td>
+                            <td id="M6"></td>
+                            <td id="X6"></td>
+                            <td id="J6"></td>
+                            <td id="V6"></td>
+                            <td id="S6"></td>
                         </tr>
                         <tr>
                             <td>16:00 - 17:30</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L7"></td>
+                            <td id="M7"></td>
+                            <td id="X7"></td>
+                            <td id="J7"></td>
+                            <td id="V7"></td>
+                            <td id="S7"></td>
                         </tr>
                         <tr>
                             <td>17:30 - 19:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td id="L8"></td>
+                            <td id="M8"></td>
+                            <td id="X8"></td>
+                            <td id="J8"></td>
+                            <td id="V8"></td>
+                            <td id="S8"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <br>
-            <div align="center">
-                <button class="customBtn" onclick="goBack()" type="submit">Regresar</button>
-                <br>
+            <div class="btnContainer">
+                <button class="customBtn" onclick="goBack()">Regresar</button>
                 <button class="customBtn" onclick="goHome()">Home</button>
             </div>
         </div>

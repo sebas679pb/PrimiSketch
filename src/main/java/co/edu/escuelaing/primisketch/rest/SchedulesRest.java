@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.escuelaing.primisketch.entities.ScheduleXSubject;
 import co.edu.escuelaing.primisketch.entities.UserXSchedule;
+import co.edu.escuelaing.primisketch.services.ScheduleXSubjectService;
 import co.edu.escuelaing.primisketch.services.SchedulesService;
 import co.edu.escuelaing.primisketch.services.UserXScheduleService;
 
@@ -23,10 +25,18 @@ public class SchedulesRest {
 
     @Autowired
     private UserXScheduleService userXScheduleService;
+
+    @Autowired
+    private ScheduleXSubjectService scheduleXSubjectService;
     
     @GetMapping("/getGroupByUserId")
     private ResponseEntity<List<UserXSchedule>> getGroupByUserId(@PathParam("id") Long id) {
         return ResponseEntity.ok(userXScheduleService.getGroupByUserId(id));
+    }
+
+    @GetMapping("/getSubjectsByScheduleId")
+    private ResponseEntity<List<ScheduleXSubject>> getSubjectsByScheduleId(@PathParam("id") Long id) {
+        return ResponseEntity.ok(scheduleXSubjectService.getWithScheduleId(id));
     }
 
 }
