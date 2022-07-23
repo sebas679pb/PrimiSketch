@@ -235,6 +235,74 @@ function deleteMember() {
     document.getElementById("popup").style.display = "none";
 }
 
+async function validAdd(){
+    var boxTimeSketch = [];
+    var boxTimeSubject = [];
+    await fetch("/api/schedules/getSubjectsByScheduleId?id=" + sessionStorage.getItem("idSchedule"), { method: "GET" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                data.forEach(element => {
+                    var idSub = element.idSubject.idSubject
+                    setBoxTime(idSub, boxTimeSketch);
+                });
+            } else {
+                console.log("Subjects no encontrados.");
+            }
+        });
+    var memo = document.getElementById("memoSubject").value;
+    var group = document.getElementById("groupSubject").value;
+    await fetch("/api/subjects/getSubjectsByMemoGroup?memo=" + memo + "&group=" + group, { method: "POST" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                var idSubject = data.idSubject;
+                setBoxTime(idSubject, boxTimeSubject);
+            } else {
+                console.log("Materia no encontrada.");
+            }
+        });
+    setTimeout(() => { compare(boxTimeSketch, boxTimeSubject) }, 1100);
+    
+}
+
+function compare(boxTimeSketch, boxTimeSubject){
+    for(var i = 0; i < boxTimeSketch.length; i++){
+        for(var j = 0; j < boxTimeSubject.length; j++){
+            if(boxTimeSketch[i] == boxTimeSubject[j]){
+                alert("Esta materia genera conflicto con otra que ya se encuentra agregada.");
+                document.getElementById("popup").style.display = "none";
+                return;
+            }
+        }
+    }
+    addSubjectToSketch();
+}
+
+function setBoxTime(idSub,boxTime){
+    fetch("/api/subjects/getDatesSubject?id=" + idSub, { method: "GET" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                data.forEach(element => {
+                    var day = element.dia;
+                    setTimeParams(element.startTime, element.endTime);
+                    if (duration == 1) {
+                        var boxId = day + startTime;
+                        boxTime.push(boxId);
+                    } else {
+                        var boxId = day + startTime;
+                        boxTime.push(boxId);
+                        var boxIdBlock = day + (startTime + 1);
+                        boxTime.push(boxIdBlock);
+                    }
+                });
+            } else {
+                console.log("Horarios no encontrados.");
+            }
+        });
+}
+
 /**
  * Funcion que settea los tiempos de una materia en el horario
  * @param {start} hora de inicio de la materia
@@ -285,6 +353,15 @@ function setTimeParams(start,end){
  * Funcion que realiza el setup inicial de la conexion con el servidor
  */
 function setup() {
+    stomp();
+    setTimeout(() => { visualSchedule() }, 1000);
+    
+}
+
+/**
+ * Funcion que realiza el setup inicial de la conexion con el servidor
+ */
+function setupUser() {
     stomp();
     setTimeout(() => { visualSchedule() }, 1000);
     setTimeout(() => { getUsers() }, 1000);
