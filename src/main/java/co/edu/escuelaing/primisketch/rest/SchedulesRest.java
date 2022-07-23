@@ -3,7 +3,6 @@ package co.edu.escuelaing.primisketch.rest;
 import java.util.List;
 import java.util.Optional;
 
-import javax.security.auth.Subject;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;

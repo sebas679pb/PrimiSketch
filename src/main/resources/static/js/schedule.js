@@ -1,7 +1,6 @@
 var startTime;
 var endTime;
 var duration;
-var del;
 var stompClient;
 
 function visualSchedule() {
@@ -79,6 +78,15 @@ function getDatesSubjectDelete(idSub) {
                         var container = document.getElementById(boxIdBlock);
                         container.innerHTML = "";
                     }
+                    var json = {
+                        action: 2,
+                        day: day,
+                        startTime: startTime,
+                        endTime: endTime,
+                        duration: duration,
+                        container: container
+                    };
+                    sincro(json);
                 });
             } else {
                 console.log("Horarios no encontrados.");
@@ -117,11 +125,11 @@ function addSubjectToSketch(){
         .then((data) => data.json())
         .then((data) => {
             if (data != null) {
-                var idSubject = data.idSubject
+                var idSubject = data.idSubject;
+                var memoSubject = data.memoSub;
+                var groupSubject = data.groupSub;
                 fetch("/api/schedules/newScheduleXSubject?scheduleId=" + sessionStorage.getItem("idSchedule") + "&subjectId=" + idSubject, { method: "POST" })
-                console.log(sessionStorage.getItem("idSchedule"));
-                console.log(idSubject);
-                setTimeout(() => {visualSchedule()} , 1000);
+                setTimeout(() => { getDatesSubject(idSubject, memoSubject, groupSubject) } , 1000);
             } else {
                 console.log("Materia no encontrada.");
             }
@@ -137,7 +145,7 @@ function deleteSubjectFromSketch(){
             if (data != null) {
                 var idSubject = data.idSubject
                 fetch("/api/schedules/deleteScheduleXSubject?scheduleId=" + sessionStorage.getItem("idSchedule") + "&subjectId=" + idSubject, { method: "DELETE" })
-                setTimeout(() => { visualSchedule() }, 1000);
+                setTimeout(() => { getDatesSubjectDelete(idSubject) }, 1000);
             } else {
                 console.log("Materia no encontrada.");
             }
@@ -183,37 +191,29 @@ function setTimeParams(start,end){
     duration = endTime - startTime;
 }
 
-function setDeleteTrue(){
-    del = true;
-}
-
-function setDeleteFalse() {
-    del = false;
-}
-
-// sdadsadadasdadd
+// StopConfig
 
 function setup() {
     stomp();
+    setTimeout(() => { visualSchedule() }, 2500);
 }
 
 function sincro(json) {
     console.log(json);
     stompClient.send(
-        "/topic/editSchedule" + sessionStorage.getItem("idSchedule"),
+        "/topic/primiSketch" + sessionStorage.getItem("idSchedule"),
         {},
         JSON.stringify(json)
     );
 }
 
 function stomp() {
-    // console.log("Stomp");
     var socket = new SockJS("/stompEndpoint");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log(frame);
         stompClient.subscribe(
-            "/topic/editSchedule" + sessionStorage.getItem("idSchedule"),
+            "/topic/primiSketch" + sessionStorage.getItem("idSchedule"),
             function (event) {
                 var json = JSON.parse(event.body);
                 switch (json.action) {
@@ -233,7 +233,19 @@ function stomp() {
                         }
                         break;
                     case 2:
-                        console.log("delete");
+                        setTimeParams(json.startTime, json.endTime);
+                        if (json.duration == 1) {
+                            var boxId = json.day + json.startTime;
+                            var container = document.getElementById(boxId);
+                            container.innerHTML = "";
+                        } else {
+                            var boxId = json.day + json.startTime;
+                            var container = document.getElementById(boxId);
+                            container.innerHTML = "";
+                            var boxIdBlock = json.day + (json.startTime + 1);
+                            var container = document.getElementById(boxIdBlock);
+                            container.innerHTML = "";
+                        }
                         break
                     }
             }
@@ -243,5 +255,5 @@ function stomp() {
 
 
 function message(json) {
-    stompClient.send("/topic/editSchedule", {}, JSON.stringify(json));
+    stompClient.send("/topic/primiSketch", {}, JSON.stringify(json));
 }
