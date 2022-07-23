@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import co.edu.escuelaing.primisketch.entities.Subjects;
 import co.edu.escuelaing.primisketch.repositories.SubjectsRepository;
 
+/**
+ * Clase que contiene los servicios para realizar las operaciones CRUD sobre las asignaturas
+ */
 @Service
 public class SubjectsService {
     

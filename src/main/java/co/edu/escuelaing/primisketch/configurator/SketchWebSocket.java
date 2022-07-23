@@ -10,11 +10,17 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class SketchWebSocket implements WebSocketMessageBrokerConfigurer {
     
+    /**
+     * Configuracion de los endpoints de websocket
+     */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry endpoint) {
         endpoint.addEndpoint("/stompEndpoint").withSockJS();
     }
 
+    /**
+     * Configuracion de los canales de mensajes
+     */
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic");

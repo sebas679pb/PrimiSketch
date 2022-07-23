@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import co.edu.escuelaing.primisketch.entities.Schedules;
 import co.edu.escuelaing.primisketch.repositories.SchedulesRepository;
 
+/**
+ * Clase que contiene los servicios para realizar las operaciones CRUD sobre los horarios
+ */
 @Service
 public class SchedulesService {
     

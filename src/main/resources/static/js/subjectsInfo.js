@@ -1,3 +1,6 @@
+/**
+ * Funcion que renderiza la informacion de una materia de manera visual
+ */
 async function getSubjectInfo(){
     var memoCard = document.getElementById("memoCard");
     var infoCard = document.getElementById("infoCard");
@@ -44,6 +47,9 @@ async function getSubjectInfo(){
     document.getElementById("subjectsInfo").style.display = "block";
 }
 
+/**
+ * Funcion que realiza la busque da todas las asignaturas en base de datos
+ */
 function getSubjects(){
     fetch("/api/subjects/getAllSubjects", { method: "GET" })
         .then((data) => data.json())
@@ -63,6 +69,9 @@ function getSubjects(){
         });
 }
 
+/**
+ * Funcion que realiza la busqueda de todos los grupos asociados a una materia en base de datos
+ */
 function getGroups(){
     var memo = document.getElementById("memoSubject").value;
     fetch("/api/subjects/getSubjectsByMemo?memo=" + memo, { method: "GET" })

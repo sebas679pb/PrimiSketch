@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import co.edu.escuelaing.primisketch.entities.Users;
 import co.edu.escuelaing.primisketch.repositories.UsersRepository;
 
+/**
+ * Clase que contiene los servicios para realizar las operaciones CRUD sobre los usuarios
+ */
 @Service
 public class UsersService {
     

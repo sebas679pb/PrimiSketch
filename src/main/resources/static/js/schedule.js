@@ -3,6 +3,9 @@ var endTime;
 var duration;
 var stompClient;
 
+/**
+ * Funcion que renderiza el horario para que se pueda observar de manera visual
+ */
 function visualSchedule() {
     fetch("/api/schedules/getSubjectsByScheduleId?id=" + sessionStorage.getItem("idSchedule"), { method: "GET" })
         .then((data) => data.json())
@@ -20,6 +23,12 @@ function visualSchedule() {
         });
 }
 
+/**
+ * Funcion que renderiza el horario para que se pueda observar de manera visual
+ * @param {idSub} id de la materia a renderizar
+ * @param {memoSub} nombre de la materia a renderizar
+ * @param {groupSub} grupo de la materia a renderizar
+ */
 function getDatesSubject(idSub,memoSub,groupSub){
     fetch("/api/subjects/getDatesSubject?id=" + idSub, { method: "GET" })
         .then((data) => data.json())
@@ -58,6 +67,10 @@ function getDatesSubject(idSub,memoSub,groupSub){
         });
 }
 
+/**
+ * Funcion para eliminar una materia del horario visualmente
+ * @param {idSubject} id de la materia a eliminar
+ */
 function getDatesSubjectDelete(idSub) {
     fetch("/api/subjects/getDatesSubject?id=" + idSub, { method: "GET" })
         .then((data) => data.json())
@@ -94,6 +107,9 @@ function getDatesSubjectDelete(idSub) {
         });
 }
 
+/**
+ * Funcion para crear un nuevo horario
+ */
 function newSchedule(){
     var name = document.getElementById("newSchedule").value;
     fetch("/api/schedules/newSchedule?name=" + name, { method: "POST" })
@@ -114,10 +130,17 @@ function newSchedule(){
         });
 }
 
+/**
+ * Funcion para conectar un usuario con el horario
+ * @param {idSchedule} id del horario a conectar
+ */
 function connectUserXSchedule(idSchedule){
     fetch("/api/schedules/newUserXSchedule?userId=" + sessionStorage.getItem("idUser") + "&scheduleId=" + idSchedule, { method: "POST" })
 }
 
+/**
+ * Funcion para agregar una materia al horario
+ */
 function addSubjectToSketch(){
     var memo = document.getElementById("memoSubject").value;
     var group = document.getElementById("groupSubject").value;
@@ -136,6 +159,9 @@ function addSubjectToSketch(){
         });
 }
 
+/**
+ * Funcion para eliminar una materia del horario
+ */
 function deleteSubjectFromSketch(){
     var memo = document.getElementById("memoSubject").value;
     var group = document.getElementById("groupSubject").value;
@@ -152,6 +178,9 @@ function deleteSubjectFromSketch(){
         });
 }
 
+/**
+ * Funcion para obtener todos los usuarios del sistema
+ */
 function getUsers() {
     fetch("/api/users/getAllUsers", { method: "GET" })
         .then((data) => data.json())
@@ -172,6 +201,9 @@ function getUsers() {
         });
 }
 
+/**
+ * Funcion para adicionar un usuario a la edicion del horario
+ */
 function addMember() {
     var user = document.getElementById("users").value;
     fetch("/api/users/getUserByName?name=" + user, { method: "GET" })
@@ -186,6 +218,9 @@ function addMember() {
     document.getElementById("popup").style.display = "none";
 }
 
+/**
+ * Funcion para eliminar un usuario de la edicion del horario
+ */
 function deleteMember() {
     var user = document.getElementById("users").value;
     fetch("/api/users/getUserByName?name=" + user, { method: "GET" })
@@ -200,6 +235,11 @@ function deleteMember() {
     document.getElementById("popup").style.display = "none";
 }
 
+/**
+ * Funcion que settea los tiempos de una materia en el horario
+ * @param {start} hora de inicio de la materia
+ * @param {end} hora de fin de la materia
+ */
 function setTimeParams(start,end){
     // set start time
     if(start === ("7:00"))
@@ -239,8 +279,11 @@ function setTimeParams(start,end){
     duration = endTime - startTime;
 }
 
-// StopConfig
+// StompConfig
 
+/**
+ * Funcion que realiza el setup inicial de la conexion con el servidor
+ */
 function setup() {
     stomp();
     setTimeout(() => { visualSchedule() }, 1000);
@@ -248,6 +291,9 @@ function setup() {
     
 }
 
+/**
+ * Funcion que realiza la sincronizacion con el servidor
+ */
 function sincro(json) {
     console.log(json);
     stompClient.send(
@@ -257,6 +303,9 @@ function sincro(json) {
     );
 }
 
+/**
+ * Funcion que ejecuta las modificaciones sobre la pagina web con respecto al servidor
+ */
 function stomp() {
     var socket = new SockJS("/stompEndpoint");
     stompClient = Stomp.over(socket);
@@ -303,7 +352,9 @@ function stomp() {
     });
 }
 
-
+/**
+ * Funcion que intercambia mensajes con el servidor
+ */
 function message(json) {
     stompClient.send("/topic/primiSketch", {}, JSON.stringify(json));
 }

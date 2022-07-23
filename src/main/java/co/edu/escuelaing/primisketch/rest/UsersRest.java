@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.escuelaing.primisketch.entities.Users;
 import co.edu.escuelaing.primisketch.services.UsersService;
 
+/**
+ * Clase que contiene los servicios REST para realizar las operaciones CRUD sobre los Usuarios
+ */
 @RestController
 @RequestMapping("/api/users")
 public class UsersRest {

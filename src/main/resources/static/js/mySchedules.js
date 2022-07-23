@@ -1,3 +1,6 @@
+/**
+ * Funcion que trae los horarios del usuario y los muestra en la pagina web
+ */
 function getSchedules() {
     var userSchedules = document.getElementById("schedules");
     fetch("/api/schedules/getGroupByUserId?id=" + sessionStorage.getItem("idUser"), { method: "GET" })
@@ -13,6 +16,10 @@ function getSchedules() {
         });
 }
 
+/**
+ * Almacena de manera temporal el identificador del usuario
+ * @param {idSchedule} idSchedule
+ */
 function getSchedule(idSchedule) {
     sessionStorage.setItem("idSchedule", idSchedule);
     window.location.href = "/schedule.html";

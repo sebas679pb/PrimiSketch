@@ -24,6 +24,9 @@ import co.edu.escuelaing.primisketch.services.SubjectsService;
 import co.edu.escuelaing.primisketch.services.UserXScheduleService;
 import co.edu.escuelaing.primisketch.services.UsersService;
 
+/**
+ * Clase que contiene los servicios REST para realizar las operaciones CRUD sobre los horarios
+ */
 @RestController
 @RequestMapping("/api/schedules")
 public class SchedulesRest {

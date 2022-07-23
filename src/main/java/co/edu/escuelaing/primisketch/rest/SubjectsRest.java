@@ -17,6 +17,9 @@ import co.edu.escuelaing.primisketch.entities.Subjects;
 import co.edu.escuelaing.primisketch.services.DatesSubjectService;
 import co.edu.escuelaing.primisketch.services.SubjectsService;
 
+/**
+ * Clase que contiene los servicios REST para realizar las operaciones CRUD sobre las asignaturas
+ */
 @RestController
 @RequestMapping("/api/subjects")
 public class SubjectsRest {

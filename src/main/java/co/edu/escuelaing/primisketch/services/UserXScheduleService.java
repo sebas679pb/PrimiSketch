@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import co.edu.escuelaing.primisketch.entities.UserXSchedule;
 import co.edu.escuelaing.primisketch.repositories.UserXScheduleRepository;
 
+/**
+ * Clase que contiene los servicios para realizar las operaciones CRUD sobre la asociacion entre usuarios y horarios
+ */
 @Service
 public class UserXScheduleService {
     
