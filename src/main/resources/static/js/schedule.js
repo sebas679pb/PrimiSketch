@@ -195,7 +195,7 @@ function setTimeParams(start,end){
 
 function setup() {
     stomp();
-    setTimeout(() => { visualSchedule() }, 2500);
+    setTimeout(() => { visualSchedule() }, 1000);
 }
 
 function sincro(json) {
