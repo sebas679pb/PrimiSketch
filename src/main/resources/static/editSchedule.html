@@ -2,17 +2,36 @@
 <html>
 
 <head>
-    <title>Schedule</title>
+    <title>New Schedule</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
     <link rel="stylesheet" type="text/css" href="css/schedule.css">
+    <link rel="stylesheet" type="text/css" href="css/subjectsInfo.css">
     <script src="js/schedule.js"></script>
     <script src="js/navBar.js"></script>
+    <script src="js/subjectsInfo.js"></script>
 </head>
 
-<body onload="visualSchedule()">
+<body onload="visualSchedule();getSubjects();setDeleteFalse();">
     <div class="background" style="background-image: url('imgs/background.jpg');">
+        <div class="popup" id="popup" style="display:none">
+            <center>
+            <div class="selectStyle">
+                <select id="memoSubject" name="memoSubject" onchange="getGroups()">
+                    <option disable hidden>Subjects</option>
+                </select>
+                <select id="groupSubject" name="groupSubject">
+                    <option disable hidden>Group</option>
+                </select>
+            </div>
+            <br><br>
+            <button class="customBtnBack" id="addBtn" onclick="addSubjectToSketch();cancel();" style="display:none">Add</button>
+            <button class="customBtnBack" id="deleteBtn" onclick="deleteSubjectFromSketch();cancel()" style="display:none">Delete</button>
+            <br>
+            <button class="customBtnBack" id="deleteBtn" onclick="cancel()">Cancel</button>
+            </center>
+        </div>
         <div class="container">
             <div class="appLogo">
                 <p class="appLetter">PrimiSketch</p>
@@ -107,11 +126,11 @@
                     </tbody>
                 </table>
             </div>
-            <br>
+            <br><br>
             <div class="btnContainer">
-                <button class="customBtnBack" onclick="goBack()">Go Back</button>
-                <button class="customBtnBack" onclick="goHome()">Home</button>
-                <button class="customBtnBack" onclick="goToEditSchedule()">Edit</button>
+                <button class="customBtnBack" onclick="addSubject()">Add Subject</button>
+                <button class="customBtnBack" onclick="goToMySchedules()">Save Sketch</button>
+                <button class="customBtnBack" onclick="deleteSubject()">Delete Subject</button>
             </div>
         </div>
     </div>

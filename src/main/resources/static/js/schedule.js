@@ -1,8 +1,10 @@
 var startTime;
 var endTime;
 var duration;
+var del;
 
 function visualSchedule() {
+    setup();
     fetch("/api/schedules/getSubjectsByScheduleId?id=" + sessionStorage.getItem("idSchedule"), { method: "GET" })
         .then((data) => data.json())
         .then((data) => {
@@ -10,7 +12,8 @@ function visualSchedule() {
                 data.forEach(element => {
                     var idSub = element.idSubject.idSubject
                     var memoSub = element.idSubject.memoSub;
-                    getDatesSubject(idSub,memoSub);
+                    var groupSub = element.idSubject.groupSub;
+                    getDatesSubject(idSub,memoSub,groupSub);
                 });
             } else {
                 console.log("Subjects no encontrados.");
@@ -18,7 +21,7 @@ function visualSchedule() {
         });
 }
 
-function getDatesSubject(idSub,memoSub){
+function getDatesSubject(idSub,memoSub,groupSub){
     fetch("/api/subjects/getDatesSubject?id=" + idSub, { method: "GET" })
         .then((data) => data.json())
         .then((data) => {
@@ -29,18 +32,113 @@ function getDatesSubject(idSub,memoSub){
                     if(duration == 1){
                         var boxId = day + startTime;
                         var container = document.getElementById(boxId);
-                        container.innerHTML = memoSub;
+                        container.innerHTML = memoSub + " - " + groupSub;
                     }else{
                         var boxId = day + startTime;
                         var container = document.getElementById(boxId);
-                        container.innerHTML = memoSub;
+                        container.innerHTML = memoSub + " - " + groupSub;
                         var boxIdBlock = day + (startTime + 1);
                         var container = document.getElementById(boxIdBlock);
-                        container.innerHTML = memoSub;
+                        container.innerHTML = memoSub + " - " + groupSub;
+                    }
+                    // var json = {
+                    //     day:day,
+                    //     startTime:startTime,
+                    //     endTime:endTime,
+                    //     memoSub:memoSub,
+                    //     groupSub:groupSub,
+                    //     duration:duration,
+                    //     container: container
+                    // };
+                    // sincro(json);
+                });
+            } else {
+                console.log("Horarios no encontrados.");
+            }
+        });
+}
+
+function getDatesSubjectDelete(idSub) {
+    fetch("/api/subjects/getDatesSubject?id=" + idSub, { method: "GET" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                data.forEach(element => {
+                    var day = element.dia;
+                    setTimeParams(element.startTime, element.endTime);
+                    if (duration == 1) {
+                        var boxId = day + startTime;
+                        var container = document.getElementById(boxId);
+                        container.innerHTML = "";
+                    } else {
+                        var boxId = day + startTime;
+                        var container = document.getElementById(boxId);
+                        container.innerHTML = "";
+                        var boxIdBlock = day + (startTime + 1);
+                        var container = document.getElementById(boxIdBlock);
+                        container.innerHTML = "";
                     }
                 });
             } else {
                 console.log("Horarios no encontrados.");
+            }
+        });
+}
+
+function newSchedule(){
+    var name = document.getElementById("newSchedule").value;
+    fetch("/api/schedules/newSchedule?name=" + name, { method: "POST" })
+        .then((data) => { 
+            if(data.status == 400){
+                return null
+            }else
+                return data.json() } )
+        .then((data) => {
+            if (data != null) {
+                var idSketch = data.idSchedule;
+                sessionStorage.setItem("idSchedule", idSketch);
+                connectUserXSchedule(idSketch);
+                window.location.href = "/editSchedule.html";
+            } else {
+                alert("Nombre no disponible.");
+            } 
+        });
+}
+
+function connectUserXSchedule(idSchedule){
+    fetch("/api/schedules/newUserXSchedule?userId=" + sessionStorage.getItem("idUser") + "&scheduleId=" + idSchedule, { method: "POST" })
+}
+
+function addSubjectToSketch(){
+    var memo = document.getElementById("memoSubject").value;
+    var group = document.getElementById("groupSubject").value;
+    fetch("/api/subjects/getSubjectsByMemoGroup?memo=" + memo + "&group=" + group, { method: "POST" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                var idSubject = data.idSubject
+                fetch("/api/schedules/newScheduleXSubject?scheduleId=" + sessionStorage.getItem("idSchedule") + "&subjectId=" + idSubject, { method: "POST" })
+                console.log(sessionStorage.getItem("idSchedule"));
+                console.log(idSubject);
+                setTimeout(() => {visualSchedule()} , 1000);
+            } else {
+                console.log("Materia no encontrada.");
+            }
+        });
+}
+
+function deleteSubjectFromSketch(){
+    var memo = document.getElementById("memoSubject").value;
+    var group = document.getElementById("groupSubject").value;
+    fetch("/api/subjects/getSubjectsByMemoGroup?memo=" + memo + "&group=" + group, { method: "POST" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                var idSubject = data.idSubject
+                fetch("/api/schedules/deleteScheduleXSubject?scheduleId=" + sessionStorage.getItem("idSchedule") + "&subjectId=" + idSubject, { method: "DELETE" })
+                setTimeout(() => { visualSchedule() }, 1000);
+            } else {
+                console.log("Materia no encontrada.");
             }
         });
 }
@@ -82,4 +180,63 @@ function setTimeParams(start,end){
         endTime = 9;
     // set duration
     duration = endTime - startTime;
+}
+
+function setDeleteTrue(){
+    del = true;
+}
+
+function setDeleteFalse() {
+    del = false;
+}
+
+// sdadsadadasdadd
+
+var stompClient;
+
+function setup() {
+    stomp();
+}
+
+function sincro(json) {
+    console.log(json);
+    stompClient.send(
+        "/topic/editSchedule" + sessionStorage.getItem("idSchedule"),
+        {},
+        JSON.stringify(json)
+    );
+}
+
+function stomp() {
+    // console.log("Stomp");
+    var socket = new SockJS("/stompEndpoint");
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        console.log(frame);
+        stompClient.subscribe(
+            "/topic/editSchedule" + sessionStorage.getItem("idSchedule"),
+            function (event) {
+                var json = JSON.parse(event.body);
+
+                setTimeParams(json.startTime, json.endTime);
+                if (duration == 1) {
+                    var boxId = json.day + json.startTime;
+                    var container = document.getElementById(boxId);
+                    container.innerHTML = json.memoSub + " - " + json.groupSub;
+                } else {
+                    var boxId = json.day + json.startTime;
+                    var container = document.getElementById(boxId);
+                    container.innerHTML = json.memoSub + " - " + json.groupSub;
+                    var boxIdBlock = json.day + (json.startTime + 1);
+                    var container = document.getElementById(boxIdBlock);
+                    container.innerHTML = json.memoSub + " - " + json.groupSub;
+                }
+            }
+        );
+    });
+}
+
+
+function message(json) {
+    stompClient.send("/topic/kanvan", {}, JSON.stringify(json));
 }

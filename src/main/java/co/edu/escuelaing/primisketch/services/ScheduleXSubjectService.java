@@ -1,6 +1,7 @@
 package co.edu.escuelaing.primisketch.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,8 @@ public class ScheduleXSubjectService {
     public List<ScheduleXSubject> getWithSubjectId(Long id) {
         return scheduleXSubjectRepository.getWithSubjectId(id);
     }
-    
+
+    public Optional<ScheduleXSubject> getByScheduleXSubject(Long idSchedule, Long idSubject) {
+        return scheduleXSubjectRepository.getByScheduleXSubject(idSchedule, idSubject);
+    }
 }

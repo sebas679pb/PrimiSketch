@@ -28,6 +28,10 @@ public class Schedules implements Serializable {
         this.nombre = nombre;
     }
 
+    public Schedules(String nombre) {
+        this.nombre = nombre;
+    }
+
     // Getters
     public Long getIdSchedule() {
         return idSchedule;

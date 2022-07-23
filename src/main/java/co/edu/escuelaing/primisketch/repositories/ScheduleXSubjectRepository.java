@@ -1,6 +1,7 @@
 package co.edu.escuelaing.primisketch.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +18,8 @@ public interface ScheduleXSubjectRepository extends JpaRepository<ScheduleXSubje
 
     @Query("SELECT c FROM ScheduleXSubject c WHERE id_subject=:id")
     List<ScheduleXSubject> getWithSubjectId(@Param("id") Long id);
+
+    @Query("SELECT c FROM ScheduleXSubject c WHERE id_schedule=:idSchedule AND id_subject=:idSubject")
+    Optional<ScheduleXSubject> getByScheduleXSubject(@Param("idSchedule") Long idSchedule, @Param("idSubject") Long idSubject);
 
 }
