@@ -10,6 +10,10 @@ https://primisketch.herokuapp.com/
 
 Jhon Sebastian Piñeros Barrera
 
+## LOC/h
+
+Se realizaron 3031 lineas de codigo en aproximadamente 70 horas de trabajo, es decir, 43.3 lineas de codigo por hora.
+
 ## Resumen
 
 Este proyecto consiste en realizar el diseño y construccion de una aplicacion que le permitira al usuario crear y visualizar horarios academicos de acuerdo a las materias que planee inscribir en el semestre; tambien permitira crear grupos para realizar esta organizacion simultaneamente entre varios usarios en tiempo real.
