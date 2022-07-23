@@ -85,4 +85,10 @@ public class SchedulesRest {
         scheduleXSubjectService.delete(scheduleXSubject.get());
     }
 
+    @DeleteMapping("/deleteUserXSchedule")
+    private void deleteUserXSchedule(@PathParam("userId") Long userId, @PathParam("scheduleId") Long scheduleId) {
+        Optional<UserXSchedule> userXSchedule = userXScheduleService.getByUserXSchedule(userId, scheduleId);
+        userXScheduleService.delete(userXSchedule.get());
+    }
+
 }

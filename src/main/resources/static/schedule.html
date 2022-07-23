@@ -10,12 +10,28 @@
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
     <link rel="stylesheet" type="text/css" href="css/schedule.css">
+    <link rel="stylesheet" type="text/css" href="css/subjectsInfo.css">
     <script src="js/schedule.js"></script>
     <script src="js/navBar.js"></script>
 </head>
 
 <body onload="setup()">
     <div class="background" style="background-image: url('imgs/background.jpg');">
+        <div class="popup" id="popup" style="display:none">
+            <center>
+                <div class="selectStyle">
+                    <select id="users" name="users">
+                        <option disable hidden>User</option>
+                    </select>
+                </div>
+                <br>
+                <div class="btnContainer">
+                    <button class="customBtnBack" id="addBtn" onclick="addMember()">Add</button>
+                    <button class="customBtnBack" id="deleteBtn" onclick="popupMembersCancel()">Cancel</button>
+                    <button class="customBtnBack" id="deleteBtn" onclick="deleteMember()">Delete</button>
+                </div>
+            </center>
+        </div>
         <div class="container">
             <div class="appLogo">
                 <p class="appLetter">PrimiSketch</p>
@@ -115,6 +131,10 @@
                 <button class="customBtnBack" onclick="goBack()">Go Back</button>
                 <button class="customBtnBack" onclick="goHome()">Home</button>
                 <button class="customBtnBack" onclick="goToEditSchedule()">Edit</button>
+            </div>
+            <br>
+            <div align="center">
+                <button class="customBtnBack" onclick="popupEditMembers()">Members</button>
             </div>
         </div>
     </div>

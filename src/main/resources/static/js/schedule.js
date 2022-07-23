@@ -152,6 +152,54 @@ function deleteSubjectFromSketch(){
         });
 }
 
+function getUsers() {
+    fetch("/api/users/getAllUsers", { method: "GET" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                var users = document.getElementById("users");
+                data.forEach(element => {
+                    if(element.idUser != sessionStorage.getItem("idUser")){
+                        var option = document.createElement("option");
+                        option.text = element.username;
+                        option.value = element.username;
+                        users.add(option);
+                    }
+                });
+            } else {
+                console.log("Materias no encontradas.");
+            }
+        });
+}
+
+function addMember() {
+    var user = document.getElementById("users").value;
+    fetch("/api/users/getUserByName?name=" + user, { method: "GET" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                fetch("/api/schedules/newUserXSchedule?userId=" + data.idUser + "&scheduleId=" + sessionStorage.getItem("idSchedule"), { method: "POST" })
+            } else {
+                console.log("Materias no encontradas.");
+            }
+        });
+    document.getElementById("popup").style.display = "none";
+}
+
+function deleteMember() {
+    var user = document.getElementById("users").value;
+    fetch("/api/users/getUserByName?name=" + user, { method: "GET" })
+        .then((data) => data.json())
+        .then((data) => {
+            if (data != null) {
+                fetch("/api/schedules/deleteUserXSchedule?userId=" + data.idUser + "&scheduleId=" + sessionStorage.getItem("idSchedule"), { method: "DELETE" })
+            } else {
+                console.log("Materias no encontradas.");
+            }
+        });
+    document.getElementById("popup").style.display = "none";
+}
+
 function setTimeParams(start,end){
     // set start time
     if(start === ("7:00"))
@@ -196,6 +244,8 @@ function setTimeParams(start,end){
 function setup() {
     stomp();
     setTimeout(() => { visualSchedule() }, 1000);
+    setTimeout(() => { getUsers() }, 1000);
+    
 }
 
 function sincro(json) {

@@ -35,4 +35,8 @@ public class UsersService {
         return usersRepository.loginValidation(name, password);
     }
 
+    public Optional<Users> getUserByUsername(String name) {
+        return usersRepository.getUserByUsername(name);
+    }
+
 }

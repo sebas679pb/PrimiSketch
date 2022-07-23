@@ -14,5 +14,8 @@ public interface UsersRepository extends JpaRepository<Users,Long> {
     
     @Query("SELECT c FROM Users c WHERE username=:name AND passwrd=:password")
     Optional<Users> loginValidation(@Param("name") String name, @Param("password") String password);
+
+    @Query("SELECT c FROM Users c WHERE username=:name")
+    Optional<Users> getUserByUsername(@Param("name") String name);
     
 }

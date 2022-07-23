@@ -35,3 +35,12 @@ function cancel() {
     document.getElementById("addBtn").style.display = "none";
     document.getElementById("deleteBtn").style.display = "none";
 }
+
+
+function popupMembersCancel() {
+    document.getElementById("popup").style.display = "none";
+}
+
+function popupEditMembers() {
+    document.getElementById("popup").style.display = "block";
+}

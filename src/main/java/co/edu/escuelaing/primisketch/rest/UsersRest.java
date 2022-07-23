@@ -1,5 +1,6 @@
 package co.edu.escuelaing.primisketch.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -30,6 +31,18 @@ public class UsersRest {
     @GetMapping("/getUserById")
     private ResponseEntity<Optional<Users>> getUserById(@PathParam("id") Long id) {
         Optional<Users> user = usersService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/getAllUsers")
+    private ResponseEntity<List<Users>> getAllUsers() {
+        List<Users> users = usersService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/getUserByName")
+    private ResponseEntity<Optional<Users>> getUserByUsername(@PathParam("name") String name) {
+        Optional<Users> user = usersService.getUserByUsername(name);
         return ResponseEntity.ok(user);
     }
     
