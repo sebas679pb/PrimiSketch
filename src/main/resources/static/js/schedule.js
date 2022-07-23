@@ -2,9 +2,9 @@ var startTime;
 var endTime;
 var duration;
 var del;
+var stompClient;
 
 function visualSchedule() {
-    setup();
     fetch("/api/schedules/getSubjectsByScheduleId?id=" + sessionStorage.getItem("idSchedule"), { method: "GET" })
         .then((data) => data.json())
         .then((data) => {
@@ -41,16 +41,17 @@ function getDatesSubject(idSub,memoSub,groupSub){
                         var container = document.getElementById(boxIdBlock);
                         container.innerHTML = memoSub + " - " + groupSub;
                     }
-                    // var json = {
-                    //     day:day,
-                    //     startTime:startTime,
-                    //     endTime:endTime,
-                    //     memoSub:memoSub,
-                    //     groupSub:groupSub,
-                    //     duration:duration,
-                    //     container: container
-                    // };
-                    // sincro(json);
+                    var json = {
+                        action: 1,
+                        day:day,
+                        startTime:startTime,
+                        endTime:endTime,
+                        memoSub:memoSub,
+                        groupSub:groupSub,
+                        duration:duration,
+                        container: container
+                    };
+                    sincro(json);
                 });
             } else {
                 console.log("Horarios no encontrados.");
@@ -192,8 +193,6 @@ function setDeleteFalse() {
 
 // sdadsadadasdadd
 
-var stompClient;
-
 function setup() {
     stomp();
 }
@@ -217,20 +216,26 @@ function stomp() {
             "/topic/editSchedule" + sessionStorage.getItem("idSchedule"),
             function (event) {
                 var json = JSON.parse(event.body);
-
-                setTimeParams(json.startTime, json.endTime);
-                if (duration == 1) {
-                    var boxId = json.day + json.startTime;
-                    var container = document.getElementById(boxId);
-                    container.innerHTML = json.memoSub + " - " + json.groupSub;
-                } else {
-                    var boxId = json.day + json.startTime;
-                    var container = document.getElementById(boxId);
-                    container.innerHTML = json.memoSub + " - " + json.groupSub;
-                    var boxIdBlock = json.day + (json.startTime + 1);
-                    var container = document.getElementById(boxIdBlock);
-                    container.innerHTML = json.memoSub + " - " + json.groupSub;
-                }
+                switch (json.action) {
+                    case 1:
+                        setTimeParams(json.startTime, json.endTime);
+                        if (json.duration == 1) {
+                            var boxId = json.day + json.startTime;
+                            var container = document.getElementById(boxId);
+                            container.innerHTML = json.memoSub + " - " + json.groupSub;
+                        } else {
+                            var boxId = json.day + json.startTime;
+                            var container = document.getElementById(boxId);
+                            container.innerHTML = json.memoSub + " - " + json.groupSub;
+                            var boxIdBlock = json.day + (json.startTime + 1);
+                            var container = document.getElementById(boxIdBlock);
+                            container.innerHTML = json.memoSub + " - " + json.groupSub;
+                        }
+                        break;
+                    case 2:
+                        console.log("delete");
+                        break
+                    }
             }
         );
     });
@@ -238,5 +243,5 @@ function stomp() {
 
 
 function message(json) {
-    stompClient.send("/topic/kanvan", {}, JSON.stringify(json));
+    stompClient.send("/topic/editSchedule", {}, JSON.stringify(json));
 }

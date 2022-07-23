@@ -5,13 +5,16 @@
     <title>Schedule</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
     <link rel="stylesheet" type="text/css" href="css/schedule.css">
     <script src="js/schedule.js"></script>
     <script src="js/navBar.js"></script>
 </head>
 
-<body onload="visualSchedule()">
+<body onload="setup();visualSchedule()">
     <div class="background" style="background-image: url('imgs/background.jpg');">
         <div class="container">
             <div class="appLogo">

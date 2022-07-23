@@ -5,6 +5,9 @@
     <title>New Schedule</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/mySchedules.css">
     <link rel="stylesheet" type="text/css" href="css/schedule.css">
     <link rel="stylesheet" type="text/css" href="css/subjectsInfo.css">
@@ -13,7 +16,7 @@
     <script src="js/subjectsInfo.js"></script>
 </head>
 
-<body onload="visualSchedule();getSubjects();setDeleteFalse();">
+<body onload="setup();visualSchedule();getSubjects();setDeleteFalse();">
     <div class="background" style="background-image: url('imgs/background.jpg');">
         <div class="popup" id="popup" style="display:none">
             <center>
